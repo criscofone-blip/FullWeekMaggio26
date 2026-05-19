@@ -5,52 +5,58 @@ public class ThirdPersonCamera : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform target;
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private InputActionReference lookAction;
 
-    [Header("Settings")]
-    [SerializeField] private Vector3 offset = new Vector3(0f, 2f, -5f);
+    [Header("Camera")]
+    [SerializeField] private Vector3 offset = new Vector3(0f, 2.2f, -5f);
+    [SerializeField] private float mouseSensitivity = 0.1f;
+    [SerializeField] private float followSpeed = 12f;
 
-    [SerializeField] private float followSpeed = 10f;
-    [SerializeField] private float sensitivity = 120f;
-
-    [Header("Pitch Limits")]
-    [SerializeField] private float minPitch = -30f;
-    [SerializeField] private float maxPitch = 70f;
-
-    private InputAction lookAction;
+    [Header("Pitch")]
+    [SerializeField] private float minPitch = -35f;
+    [SerializeField] private float maxPitch = 65f;
 
     private float yaw;
     private float pitch;
 
-    private void Awake()
+    private void OnEnable()
     {
-        lookAction = playerInput.actions["Look"];
+        lookAction.action.Enable();
+    }
 
+    private void OnDisable()
+    {
+        lookAction.action.Disable();
+    }
+
+    private void Start()
+    {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        yaw = target.eulerAngles.y;
     }
 
     private void LateUpdate()
     {
-        CameraRotation();
+        HandleCamera();
     }
 
-    private void CameraRotation()
+    private void HandleCamera()
     {
-        Vector2 lookInput = lookAction.ReadValue<Vector2>();
+        Vector2 lookInput = lookAction.action.ReadValue<Vector2>();
 
-        yaw += lookInput.x * sensitivity * Time.deltaTime;
-        pitch -= lookInput.y * sensitivity * Time.deltaTime;
-
+        yaw += lookInput.x * mouseSensitivity;
+        pitch -= lookInput.y * mouseSensitivity;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
-        Quaternion rotation = Quaternion.Euler(pitch, yaw, 0f);
+        Quaternion cameraRotation = Quaternion.Euler(pitch, yaw, 0f);
 
-        Vector3 targetPosition = target.position + rotation * offset;
+        Vector3 desiredPosition = target.position + cameraRotation * offset;
 
         transform.position = Vector3.Lerp(
             transform.position,
-            targetPosition,
+            desiredPosition,
             followSpeed * Time.deltaTime
         );
 

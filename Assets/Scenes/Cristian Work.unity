@@ -119,6 +119,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &394188117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/Look
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: d24b193764d406747a53526cfc7ca680, type: 3}
+  m_ActionId: 04119255-658f-40ea-98cb-af16500723fb
+--- !u!114 &489080779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/Jump
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: d24b193764d406747a53526cfc7ca680, type: 3}
+  m_ActionId: 78b995e1-6568-4fa6-8974-58fd1785d2af
 --- !u!1 &720777717
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +376,34 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &934888220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/Look
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: d24b193764d406747a53526cfc7ca680, type: 3}
+  m_ActionId: 04119255-658f-40ea-98cb-af16500723fb
+--- !u!114 &953838387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/Move
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: d24b193764d406747a53526cfc7ca680, type: 3}
+  m_ActionId: 8b995ba9-6bf0-45e6-9b17-1882e1529dcc
 --- !u!1 &967856933
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,12 +511,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1107440561}
-  playerInput: {fileID: 0}
-  offset: {x: 0, y: 2, z: -5}
-  followSpeed: 10
-  sensitivity: 120
-  minPitch: -30
-  maxPitch: 70
+  lookAction: {fileID: 934888220}
+  offset: {x: 0, y: 2.2, z: -16.3}
+  mouseSensitivity: 0.1
+  followSpeed: 12
+  minPitch: -35
+  maxPitch: 65
 --- !u!114 &967856938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,7 +668,6 @@ GameObject:
   - component: {fileID: 1107440559}
   - component: {fileID: 1107440558}
   - component: {fileID: 1107440557}
-  - component: {fileID: 1107440556}
   - component: {fileID: 1107440562}
   m_Layer: 0
   m_Name: Player_1
@@ -621,25 +676,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1107440556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1107440555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeb4cf50dc2177349a8b5fc71297bac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInput: {fileID: 0}
-  cameraTransform: {fileID: 967856936}
-  walkSpeed: 4
-  sprintSpeed: 7
-  rotationSpeed: 12
-  gravity: -20
-  jumpHeight: 1.5
 --- !u!143 &1107440557
 CharacterController:
   m_ObjectHideFlags: 0
@@ -740,7 +776,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107440555}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -3235748554017294290, guid: 4bda3f5bc90e17f4385c0d27236cf095, type: 3}
 --- !u!4 &1107440561
 Transform:
   m_ObjectHideFlags: 0
@@ -766,27 +802,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1107440555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: b10ccf353d343634d8f7fe8f9d32c80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  cameraTransform: {fileID: 0}
+  moveAction: {fileID: 953838387}
+  lookAction: {fileID: 394188117}
+  jumpAction: {fileID: 489080779}
+  sprintAction: {fileID: 0}
+  walkSpeed: 20.1
+  sprintSpeed: 7
+  rotationSpeed: 12
+  jumpHeight: 1.2
+  gravity: -20
+  groundCheckRadius: 0.2
+  groundCheckOffset: 0.05
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
