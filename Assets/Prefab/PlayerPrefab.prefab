@@ -152,11 +152,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 4226406181009879293}
   lookAction: {fileID: 0}
-  offset: {x: 0, y: 2.2, z: -20}
+  offset: {x: 0, y: 1, z: -6}
   mouseSensitivity: 0.1
   followSpeed: 10
   minPitch: -2
-  maxPitch: 20
+  maxPitch: 40
 --- !u!1 &2735099418935756957
 GameObject:
   m_ObjectHideFlags: 0
