@@ -7,15 +7,10 @@ public class CollectiblePiece : MonoBehaviour
 
     private bool collected;
 
-    // Quando il player entra nel trigger, raccoglie il pezzo.
-    private void OnTriggerEnter(Collider other)
+    // Raccoglie il pezzo.
+    public void Collect()
     {
         if (collected)
-            return;
-
-        PlayerHealth player = other.GetComponentInParent<PlayerHealth>();
-
-        if (player == null)
             return;
 
         collected = true;
