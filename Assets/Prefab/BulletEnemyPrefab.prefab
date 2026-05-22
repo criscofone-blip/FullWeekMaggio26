@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 21123583256944612}
   - component: {fileID: 4959603711044980610}
   - component: {fileID: 1713286476753713946}
-  - component: {fileID: 4735654405357702333}
-  - component: {fileID: 8303616366489272321}
+  - component: {fileID: 7180799282325492928}
+  - component: {fileID: 5650507933879680647}
   m_Layer: 0
-  m_Name: BulletPrefab
+  m_Name: BulletEnemyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4735654405357702333
+--- !u!114 &7180799282325492928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991006968650702362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c87c4a3b783ff1b439043a2b6baf2275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 25
+  lifeTime: 5
+  damage: 1
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 200
+--- !u!135 &5650507933879680647
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,21 +125,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.49999997
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8303616366489272321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2991006968650702362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 426a5ccb7fcafba4285803b3d8b61928, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTime: 5
-  hitMask:
-    serializedVersion: 2
-    m_Bits: 0

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5340831488550801551}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.15, z: 0.66}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,7 +44,9 @@ GameObject:
   - component: {fileID: 5460693285308459949}
   - component: {fileID: 1264423238730882683}
   - component: {fileID: 1130647090086754641}
-  m_Layer: 0
+  - component: {fileID: 242923851066253205}
+  - component: {fileID: 7247985204128664837}
+  m_Layer: 8
   m_Name: EnemyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,27 +156,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c523f70acfbe440b84dd64b089f747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 723205516329999146, guid: e0adf35d3646d2d4b96266ea3bc2d330, type: 3}
   firePoint: {fileID: 2963189996007575641}
   bulletPrefab: {fileID: 2991006968650702362, guid: d6e636e5d27e17142ac9588338dd2041, type: 3}
-  visionRadius: 9.2
+  visionRadius: 31.4
   obstacleMask:
     serializedVersion: 2
     m_Bits: 0
   fireRate: 1.2
-  bulletSpeed: 18
-  patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  patrolPointReachDistance: 3
+  patrolPointReachDistance: 6.41
+--- !u!114 &242923851066253205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7076959090202069507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7fa7f91c7728d3438d1d418cd601c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &7247985204128664837
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7076959090202069507}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

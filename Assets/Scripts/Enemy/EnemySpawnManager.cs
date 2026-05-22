@@ -3,29 +3,23 @@ using UnityEngine;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-    [Header("Enemy Prefab")]
+    [Header("References")]
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private Transform player;
 
     [Header("Spawn Points")]
     [SerializeField] private Transform[] spawnPoints;
 
-    [Header("Spawn Settings")]
-    [SerializeField] private int maxEnemiesOnMap = 6;
-    [SerializeField] private float spawnInterval = 3f;
-    [SerializeField] private bool spawnOnStart = true;
+    [Header("Patrol Points")]
+    [SerializeField] private Transform[] patrolPoints;
 
-    private readonly List<GameObject> spawnedEnemies = new List<GameObject>();
+    [Header("Settings")]
+    [SerializeField] private int maxEnemiesOnMap = 5;
+    [SerializeField] private float spawnInterval = 4f;
+
+    private readonly List<GameObject> spawnedEnemies = new();
+
     private float nextSpawnTime;
-
-    private void Start()
-    {
-        if (spawnOnStart)
-        {
-            SpawnUntilMax();
-        }
-
-        nextSpawnTime = Time.time + spawnInterval;
-    }
 
     private void Update()
     {
@@ -38,7 +32,7 @@ public class EnemySpawnManager : MonoBehaviour
         }
     }
 
-    // Rimuove dalla lista i nemici che sono stati distrutti.
+    // Rimuove nemici distrutti dalla lista.
     private void RemoveDeadEnemies()
     {
         for (int i = spawnedEnemies.Count - 1; i >= 0; i--)
@@ -50,42 +44,32 @@ public class EnemySpawnManager : MonoBehaviour
         }
     }
 
-    // Prova a spawnare un nemico solo se non abbiamo raggiunto il limite massimo.
+    // Prova a spawnare un nemico.
     private void TrySpawnEnemy()
     {
-        if (enemyPrefab == null)
-            return;
-
-        if (spawnPoints == null || spawnPoints.Length == 0)
-            return;
-
         if (spawnedEnemies.Count >= maxEnemiesOnMap)
             return;
 
-        Transform selectedSpawnPoint = GetRandomSpawnPoint();
+        if (spawnPoints.Length == 0)
+            return;
 
-        GameObject enemy = Instantiate(
+        Transform randomSpawn =
+            spawnPoints[Random.Range(0, spawnPoints.Length)];
+
+        GameObject enemyObject = Instantiate(
             enemyPrefab,
-            selectedSpawnPoint.position,
-            selectedSpawnPoint.rotation
+            randomSpawn.position,
+            randomSpawn.rotation
         );
 
-        spawnedEnemies.Add(enemy);
-    }
+        EnemyAI enemyAI = enemyObject.GetComponent<EnemyAI>();
 
-    // Spawna nemici fino al limite massimo impostato nell’Inspector.
-    private void SpawnUntilMax()
-    {
-        while (spawnedEnemies.Count < maxEnemiesOnMap)
+        if (enemyAI != null)
         {
-            TrySpawnEnemy();
+            enemyAI.SetPlayer(player);
+            enemyAI.SetPatrolPoints(patrolPoints);
         }
-    }
 
-    // Sceglie casualmente uno degli spawn point inseriti nell’Inspector.
-    private Transform GetRandomSpawnPoint()
-    {
-        int randomIndex = Random.Range(0, spawnPoints.Length);
-        return spawnPoints[randomIndex];
+        spawnedEnemies.Add(enemyObject);
     }
 }

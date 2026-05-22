@@ -258,7 +258,10 @@ GameObject:
   - component: {fileID: 8762333061072376359}
   - component: {fileID: 7929020447345095186}
   - component: {fileID: 5306979609777951958}
-  m_Layer: 0
+  - component: {fileID: 7803791940355680299}
+  - component: {fileID: 2106535634452664959}
+  - component: {fileID: 2985274574607952965}
+  m_Layer: 7
   m_Name: Player_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +334,7 @@ MonoBehaviour:
   lookAction: {fileID: 0}
   jumpAction: {fileID: 0}
   sprintAction: {fileID: 0}
-  walkSpeed: 20.1
+  walkSpeed: 15
   sprintSpeed: 7
   rotationSpeed: 12
   jumpHeight: 1.2
@@ -380,6 +383,63 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7803791940355680299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163389190481026380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241fb31ba994b1846bec9bcd1c2cbb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 7337028978120343713}
+  playerBulletPrefab: {fileID: 2991006968650702362, guid: d22280eef06fa1d479c1d14e150c551c, type: 3}
+  shootAction: {fileID: 0}
+  fireRate: 0.25
+  spawnDistanceFromCamera: 1
+--- !u!114 &2106535634452664959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163389190481026380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c78e9288ea2c904db2e47384336ea78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLives: 5
+  OnLivesChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &2985274574607952965
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163389190481026380}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.74, y: 0.95, z: 0.62}
+  m_Center: {x: -0.16, y: 0.11, z: 0}
 --- !u!1 &4833372565594968086
 GameObject:
   m_ObjectHideFlags: 0

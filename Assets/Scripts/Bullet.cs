@@ -35,6 +35,13 @@ public class Bullet : MonoBehaviour
 
         if (Physics.Raycast(transform.position, direction, out RaycastHit hit, distance, hitMask))
         {
+            PlayerHealth playerHealth = hit.collider.GetComponentInParent<PlayerHealth>();
+
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+            }
+
             Health health = hit.collider.GetComponentInParent<Health>();
 
             if (health != null)

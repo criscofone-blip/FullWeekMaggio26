@@ -4,8 +4,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyAI : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private Transform player;
+    [Header("References")]   
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
 
@@ -15,11 +14,13 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Shooting")]
     [SerializeField] private float fireRate = 1.2f;
-    [SerializeField] private float bulletSpeed = 18f;
 
-    [Header("Patrol")]
-    [SerializeField] private Transform[] patrolPoints;
+    [Header("Patrol")]    
     [SerializeField] private float patrolPointReachDistance = 1f;
+
+    private Transform[] patrolPoints;
+    private Transform player;
+
 
     private NavMeshAgent agent;
     private int currentPatrolIndex;
@@ -89,15 +90,17 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    
-    // Istanzia un proiettile enemy e lo spara verso la posizione del player.
+
+    // Istanzia un proiettile enemy e lo spara verso il centro del player.
     private void Shoot()
     {
         if (bulletPrefab == null || firePoint == null || player == null)
             return;
 
+        Vector3 targetPosition = player.position + Vector3.up * 0.5f;
+
         Vector3 shootDirection =
-            (player.position + Vector3.up - firePoint.position).normalized;
+            (targetPosition - firePoint.position).normalized;
 
         GameObject bulletObject = Instantiate(
             bulletPrefab,
@@ -111,6 +114,20 @@ public class EnemyAI : MonoBehaviour
         {
             bullet.SetDirection(shootDirection);
         }
+    }
+
+    // Riceve i patrol points dal manager di spawn.
+    public void SetPatrolPoints(Transform[] newPatrolPoints)
+    {
+        patrolPoints = newPatrolPoints;
+
+        GoToNextPatrolPoint();
+    }
+
+    // Riceve il player dal manager.
+    public void SetPlayer(Transform newPlayer)
+    {
+        player = newPlayer;
     }
 
     // Fa muovere il nemico tra i punti della NavMesh quando non vede il player.
