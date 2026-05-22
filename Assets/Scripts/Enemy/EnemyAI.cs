@@ -89,13 +89,15 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    // Istanzia un proiettile e gli assegna la direzione verso il player.
+    
+    // Istanzia un proiettile enemy e lo spara verso la posizione del player.
     private void Shoot()
     {
-        if (bulletPrefab == null || firePoint == null)
+        if (bulletPrefab == null || firePoint == null || player == null)
             return;
 
-        Vector3 shootDirection = (player.position + Vector3.up - firePoint.position).normalized;
+        Vector3 shootDirection =
+            (player.position + Vector3.up - firePoint.position).normalized;
 
         GameObject bulletObject = Instantiate(
             bulletPrefab,
@@ -103,11 +105,11 @@ public class EnemyAI : MonoBehaviour
             Quaternion.LookRotation(shootDirection)
         );
 
-        EnemyBullet bullet = bulletObject.GetComponent<EnemyBullet>();
+        Bullet bullet = bulletObject.GetComponent<Bullet>();
 
         if (bullet != null)
         {
-            bullet.SetDirection(shootDirection, bulletSpeed);
+            bullet.SetDirection(shootDirection);
         }
     }
 
