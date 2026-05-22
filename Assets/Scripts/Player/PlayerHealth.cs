@@ -43,9 +43,8 @@ public class PlayerHealth : MonoBehaviour
     {
         OnPlayerDeath?.Invoke();
 
-        Debug.Log("PLAYER DEAD");
+        GameManager.Instance.LoseGame();
 
-        // Per ora disattiviamo il player.
         gameObject.SetActive(false);
     }
 }
