@@ -1,9 +1,17 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
+using static UnityEditor.ShaderData;
 
 [RequireComponent(typeof(CharacterController))]
 public class ThirdPersonController : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip[] passi;
+    public float soundDelay = 0.2f;
+    private float soundTimer;
+
     [Header("References")]
     [SerializeField] private Transform cameraTransform;
 
@@ -116,6 +124,16 @@ public class ThirdPersonController : MonoBehaviour
                 targetRotation,
                 rotationSpeed * Time.deltaTime
             );
+        }
+        if (moveDirection.x != 0f || moveDirection.y != 0f)
+        {
+            soundTimer += Time.deltaTime;
+            if (soundTimer > soundDelay)
+            {
+                int rand = Random.Range(0, passi.Length);
+                audioSource.PlayOneShot(passi[rand]);
+                soundTimer = 0f;
+            }
         }
 
         if (isOnTheFloor && velocity.y < 0f)

@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip pickedUp;
+
     [Header("Input")]
     [SerializeField] private InputActionReference interactAction;
 
@@ -60,6 +63,7 @@ public class PlayerInteract : MonoBehaviour
 
         if (interactAction.action.WasPressedThisFrame())
         {
+            audioSource.PlayOneShot(pickedUp);
             currentCollectible.Collect();
         }
     }

@@ -3,6 +3,9 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip hitEnemy;
+
     [Header("Health")]
     [SerializeField] private int maxHealth = 3;
 
@@ -23,6 +26,8 @@ public class Health : MonoBehaviour
     // Toglie vita all'oggetto.
     public void TakeDamage(int damage)
     {
+        audioSource.PlayOneShot(hitEnemy);
+
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 

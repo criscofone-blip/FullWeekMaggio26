@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+   
     [Header("References")]
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Transform cameraTransform;
@@ -71,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
                 rotationSpeed * Time.deltaTime
             );
         }
+     
 
         if (jumpAction.triggered && controller.isGrounded)
         {

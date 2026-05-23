@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerShooting : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip shooting;
+
     [Header("References")]
     [SerializeField] private Camera playerCamera;
     [SerializeField] private GameObject playerBulletPrefab;
@@ -54,6 +57,7 @@ public class PlayerShooting : MonoBehaviour
     // Spara dal centro della camera verso la direzione della camera.
     private void Shoot()
     {
+        audioSource.PlayOneShot(shooting);
         Vector3 spawnPosition =
             playerCamera.transform.position +
             playerCamera.transform.forward * spawnDistanceFromCamera;

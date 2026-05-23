@@ -4,6 +4,11 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyAI : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip[] versiMumble ;
+    public float soundDelay = 10f;
+    private float soundTimer;
+
     [Header("References")]   
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
@@ -45,6 +50,13 @@ public class EnemyAI : MonoBehaviour
         else
         {
             Patrol();
+        }
+        soundTimer += Time.deltaTime;
+        if(soundTimer > soundDelay)
+        {
+            int rand =Random.Range(0,versiMumble.Length);
+            audioSource.PlayOneShot(versiMumble[rand]);
+            soundTimer = 0f;
         }
     }
 
