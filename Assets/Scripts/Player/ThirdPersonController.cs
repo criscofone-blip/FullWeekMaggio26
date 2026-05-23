@@ -9,7 +9,7 @@ public class ThirdPersonController : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip[] passi;
-    public float soundDelay = 0.2f;
+    public float soundDelay = 0.4f;
     private float soundTimer;
 
     [Header("References")]
