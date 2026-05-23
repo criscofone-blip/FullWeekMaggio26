@@ -106,6 +106,8 @@ MonoBehaviour:
   hitMask:
     serializedVersion: 2
     m_Bits: 200
+  audioSource: {fileID: 0}
+  hitEnemy: {fileID: 0}
 --- !u!135 &5650507933879680647
 SphereCollider:
   m_ObjectHideFlags: 0

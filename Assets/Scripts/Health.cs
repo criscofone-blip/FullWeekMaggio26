@@ -5,9 +5,8 @@ public class Health : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip hitEnemy;
-
     [Header("Health")]
-    [SerializeField] private int maxHealth = 3;
+    [SerializeField] public int maxHealth = 3;
 
     private int currentHealth;
 
@@ -26,8 +25,8 @@ public class Health : MonoBehaviour
     // Toglie vita all'oggetto.
     public void TakeDamage(int damage)
     {
-        audioSource.PlayOneShot(hitEnemy);
 
+        audioSource.PlayOneShot(hitEnemy);
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
@@ -35,6 +34,7 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+
             Die();
         }
     }
